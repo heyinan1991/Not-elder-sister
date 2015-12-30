@@ -1,0 +1,59 @@
+//
+//  PrefixHeader.pch
+//  百思不得姐
+//
+//  Created by xuchuangnan on 15/10/9.
+//  Copyright © 2015年 xuchuangnan. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+XCNExtension.h"
+/**
+ 设置BarButtonItem的按钮的内容
+ */
+#import "UIBarButtonItem+XCNExtension.h"
+/** 全局常量*/
+#import "XCNConst.h"
+
+/**从网络获取图片,并加载图片*/
+#import "UIImageView+XCNExtension.h"
+/** 裁剪圆形图片*/
+#import "UIImage+XCNExtension.h"
+/** 网络请求*/
+#import "XCNHTTPSessionManager.h"
+/** 计算缓存大小*/
+#import "NSString+XCNExtension.h"
+/** 状态栏点击回弹*/
+#import "XCNStatusBarViewController.h"
+
+#import "UITextField+XCNExtension.h"
+
+#define XCNFuc NSLog(@"%s",__func__);
+#ifdef DEBUG //调试阶段
+#define XCNLog(...) NSLog(__VA_ARGS__)
+#else // 发布阶段
+#define XCNLog(NSString * _Nonnull format, ...)
+#endif
+/** 往桌面写入.plist文件*/
+#define XCNWriteToPlist(obj, filename) [obj writeToFile:[NSString stringWithFormat:@"/Users/xuchuangnan/Desktop/%@.plist", filename] atomically:YES];
+/**缓存路径*/
+#define XCNCacheFilePath [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"default"]
+/**屏幕宽度*/
+#define XCNScreenW [UIScreen mainScreen].bounds.size.width
+/**屏幕高度*/
+#define XCNScreenH [UIScreen mainScreen].bounds.size.height
+// 标签的背景颜色
+#define XCNTagBgColor XCNColor(70, 142, 243)
+// rgba
+#define XCNColorA(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+// rgb
+#define XCNColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+// 随机颜色
+#define XCNRandomColor XCNColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+// 单色
+#define XCNGrayColor(v) XCNColor(v,v,v)
+
+#endif /* PrefixHeader_pch */
+
